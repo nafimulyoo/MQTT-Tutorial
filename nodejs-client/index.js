@@ -6,9 +6,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// Serve static files from 'public' directory
-app.use(express.static('public'));
-
+// MQTT Broker
 const mqttClient = mqtt.connect('tcp://broker.emqx.io');
 const topic = 'berkembang-hmft/mqtt-tutorial';
 
