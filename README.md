@@ -20,7 +20,7 @@ Repositori ini berisi contoh aplikasi yang menggunakan protokol MQTT (Message Qu
 4. Untuk melihat hasil, amati bahwa lampu built-in pada ESP32 akan merespons tombol yang kita klik karena menggunakan protokol MQTT.
 
 ## Dengan Menggunakan Aplikasi MQTT Client
-1. Instal; aplikasi MQTT Client pada perangkat mobile Anda, seperti MyMQTT pada Android.
+1. Install aplikasi MQTT Client pada perangkat mobile Anda, seperti MyMQTT pada Android.
 2. Gunakan aplikasi untuk memberikan sinyal on dan off ke broker MQTT.
  
 ## Penulis
