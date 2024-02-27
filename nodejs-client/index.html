@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lamp Control</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s;
+            color: white;
+        }
+
+        #onBtn {
+            background-color: #4CAF50;
+        }
+
+        #offBtn {
+            background-color: #f44336;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        .lamp {
+            width: 60px;
+            height: 60px;
+            background-color: grey;
+            border-radius: 30px;
+            margin: 20px;
+            box-shadow: 0 0 8px #999;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .lamp.on {
+            background-color: #ffeb3b;
+            box-shadow: 0 0 20px #ffeb3b;
+        }
+
+        .status-text {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lamp Control</h1>
+    <div class="lamp" id="lamp"></div>
+    <button class="button" id="onBtn">Turn On</button>
+    <button class="button" id="offBtn">Turn Off</button>
+    <p class="status-text">Status: <span id="status">Unknown</span></p>
+
+    <script>
+        const lamp = document.getElementById('lamp');
+        const statusSpan = document.getElementById('status');
+        const ws = new WebSocket('ws://localhost:3000');
+
+        ws.onopen = function() {
+            console.log('WebSocket connection established');
+        };
+
+        ws.onmessage = function(event) {
+            console.log('Message from server', event.data);
+            statusSpan.textContent = event.data;
+            if(event.data === 'on') {
+                lamp.classList.add('on');
+            } else {
+                lamp.classList.remove('on');
+            }
+        };
+
+        document.getElementById('onBtn').addEventListener('click', () => {
+            ws.send('on');
+        });
+
+        document.getElementById('offBtn').addEventListener('click', () => {
+            ws.send('off');
+        });
+    </script>
+</body>
+</html>
