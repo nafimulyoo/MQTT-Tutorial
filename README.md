@@ -14,7 +14,7 @@ Repositori ini berisi contoh aplikasi yang menggunakan protokol MQTT (Message Qu
 3. Jalankan perintah `node index.js` untuk menjalankan server.
 
 ## Mengontrol Lampu
-1. Buka halaman web pada 1http://localhost:3000`.
+1. Buka halaman web pada `http://localhost:3000`.
 2. Tekan tombol EN di ESP32 untuk memulai menjalankan program.
 3. Tekan tombol "Turn On" atau "Turn Off" pada halaman web untuk mengontrol lampu.
 4. Untuk melihat hasil, amati bahwa lampu built-in pada ESP32 akan merespons tombol yang kita klik karena menggunakan protokol MQTT.
